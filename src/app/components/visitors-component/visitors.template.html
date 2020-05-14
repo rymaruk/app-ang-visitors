@@ -1,0 +1,36 @@
+<section class="container">
+  <div class="row">
+    <ng-template #emptyList>
+      <div class="col-12 pt-3 pb-3">
+        <mat-card class="d-flex justify-content-center">
+          Visitors list is empty
+        </mat-card>
+      </div>
+    </ng-template>
+    <div
+      class="col-12 pt-3 pb-3"
+      *ngIf="visitors && visitors.length else emptyList"
+    >
+      <mat-list role="list">
+        <mat-list-item *ngFor="let visitor of visitors" role="listitem">
+          <div class="row no-gutters d-flex flex-row justify-content-between">
+            <div class="col-10 d-flex flex-column">
+              <p class="mb-1" matLine>{{visitor.name}}</p>
+              <p matLine>{{visitor.email}}</p>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+              <button mat-button (click)="onRemoveVisitor(visitor.id)">
+                Delete
+              </button>
+              <app-udpate-container [visitor]="visitor"></app-udpate-container>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-center">
+      <app-add-new-container></app-add-new-container>
+    </div>
+  </div>
+</section>

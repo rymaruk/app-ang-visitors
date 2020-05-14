@@ -1,0 +1,5 @@
+<app-visitors
+  (update)="onUpdateVisitor($event)"
+  (remove)="onRemoveVisitor($event)"
+  [visitors]="visitors$ | async"
+></app-visitors>
